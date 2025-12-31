@@ -10,6 +10,7 @@ pub struct AudioHandle {
 }
 
 pub struct SoundControls {
+    pub master: Shared,
     pub pink: Shared,
     pub sine_40hz: Shared,
     pub brown: Shared,
@@ -19,6 +20,7 @@ pub struct SoundControls {
 impl SoundControls {
     fn new() -> Self {
         Self {
+            master: shared(1.0),
             pink: shared(0.3),
             sine_40hz: shared(0.2),
             brown: shared(0.0),
@@ -69,6 +71,7 @@ where
     let sample_rate = config.sample_rate.0 as f64;
     let channels = config.channels as usize;
 
+    let master_vol = var(&controls.master);
     let pink_vol = var(&controls.pink);
     let sine_vol = var(&controls.sine_40hz);
     let brown_vol = var(&controls.brown);
@@ -76,6 +79,7 @@ where
 
     let mut graph =
         (pink_vol * pink() + sine_vol * sine_hz(40.0) + brown_vol * brown() + white_vol * white())
+            * master_vol
             >> pan(0.0)
             >> (clip() | clip());
 

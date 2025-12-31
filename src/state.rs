@@ -1,8 +1,23 @@
 use std::path::PathBuf;
 
-#[derive(serde::Serialize, serde::Deserialize, Default)]
+#[derive(serde::Serialize, serde::Deserialize)]
 pub struct State {
+    #[serde(default = "default_master")]
+    pub master: f32,
     pub volumes: [f32; 4],
+}
+
+fn default_master() -> f32 {
+    1.0
+}
+
+impl Default for State {
+    fn default() -> Self {
+        Self {
+            master: 1.0,
+            volumes: [0.0; 4],
+        }
+    }
 }
 
 fn state_path() -> Option<PathBuf> {
