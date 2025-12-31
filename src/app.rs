@@ -1,3 +1,5 @@
+use std::time::Duration;
+
 use crossterm::event::{self, Event, KeyCode, KeyEvent, KeyEventKind};
 use fundsp::hacker::Shared;
 use ratatui::DefaultTerminal;
@@ -59,11 +61,14 @@ impl App {
     pub fn run(mut self, terminal: &mut DefaultTerminal) -> color_eyre::Result<()> {
         while !self.should_exit {
             terminal.draw(|frame| ui::render(&self, frame))?;
-            if let Event::Key(key) = event::read()? {
-                if key.kind == KeyEventKind::Press {
-                    self.handle_key(key);
+            while event::poll(Duration::ZERO)? {
+                if let Event::Key(key) = event::read()? {
+                    if key.kind == KeyEventKind::Press {
+                        self.handle_key(key);
+                    }
                 }
             }
+            std::thread::sleep(Duration::from_millis(16));
         }
         Ok(())
     }
