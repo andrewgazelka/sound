@@ -1,6 +1,6 @@
-# focus-sound
+# sound
 
-Pink noise + 40Hz tone generator for focus, built with [fundsp](https://github.com/SamiPerttu/fundsp).
+TUI sound mixer for focus, built with [fundsp](https://github.com/SamiPerttu/fundsp) and [ratatui](https://github.com/ratatui/ratatui).
 
 ## Why pink noise + 40Hz?
 
@@ -17,7 +17,15 @@ Don't take this too seriously though - your mileage may vary.
 cargo run --release
 ```
 
-Press Ctrl+C to stop.
+### Controls
+
+| Key | Action |
+|-----|--------|
+| `j` / `↓` | Select next sound |
+| `k` / `↑` | Select previous sound |
+| `h` / `←` | Decrease volume |
+| `l` / `→` | Increase volume |
+| `q` | Quit |
 
 ## License
 

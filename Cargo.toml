@@ -1,11 +1,13 @@
 [package]
-name = "focus-sound"
+name = "sound"
 version = "0.1.0"
 edition = "2024"
-description = "Pink noise + 40Hz binaural tone for focus"
+description = "TUI sound mixer for focus"
 license = "MIT"
 
 [dependencies]
 fundsp = "0.20"
 cpal = "0.15"
-eyre = "0.6"
+color-eyre = "0.6"
+ratatui = "0.29"
+crossterm = "0.28"
