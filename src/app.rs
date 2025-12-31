@@ -140,7 +140,7 @@ impl App {
                 let vol = (c as u8 - b'0') as f32 / 9.0;
                 self.selected_sound().set_volume(vol);
             }
-            KeyCode::Char('m') => self.selected_sound().toggle_mute(),
+            KeyCode::Char('m') => self.master.toggle_mute(),
             _ => {}
         }
     }
