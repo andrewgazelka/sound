@@ -34,7 +34,7 @@ fn render_row(frame: &mut Frame, area: ratatui::layout::Rect, sound: &Sound, sel
         Style::default()
             .fg(Color::Yellow)
             .add_modifier(Modifier::BOLD)
-    } else if sound.is_muted() {
+    } else if sound.is_muted() || volume == 0.0 {
         Style::default().fg(Color::DarkGray)
     } else {
         Style::default()
