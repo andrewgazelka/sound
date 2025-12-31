@@ -1,0 +1,3 @@
+[submodule "reference/fundsp"]
+	path = reference/fundsp
+	url = https://github.com/SamiPerttu/fundsp

@@ -1,0 +1,11 @@
+[package]
+name = "focus-sound"
+version = "0.1.0"
+edition = "2024"
+description = "Pink noise + 40Hz binaural tone for focus"
+license = "MIT"
+
+[dependencies]
+fundsp = "0.20"
+cpal = "0.15"
+eyre = "0.6"
